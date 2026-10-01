@@ -1,0 +1,13 @@
+{
+  "schema": "zixcel://github/connector-config/v1",
+  "config_id": "local-publication",
+  "connection_ref": "connection:github:owner",
+  "organization": "example-org",
+  "repositories": [
+    "example-api"
+  ],
+  "allowed_actions": [
+    "create-private-repository",
+    "push-repository-snapshot"
+  ]
+}

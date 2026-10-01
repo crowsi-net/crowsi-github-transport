@@ -1,0 +1,42 @@
+[package]
+exclude = ["/registration/**", "/state/**", "/.local/**", "/.state/**", "/.data/**", "/secrets/**", "/credentials/**", "/.env", "/.env.production", "/.env.local", "/*.tgz", "/*.tar.gz", "/*.tar", "/*.zip", "/*.whl", "/*.crate", "/.ruff_cache/**", "/.mypy_cache/**", "/.tox/**", "/.nox/**", "/.hypothesis/**", "/.coverage", "/.coverage.*", "/htmlcov/**", "/lcov.info", "/junit.xml", "/*.profraw", "/*.profdata", "/*.egg-info/**", "/target/**", "/node_modules/**", "/dist/**", "/build/**", "/.cache/**", "/.pytest_cache/**", "/coverage/**"]
+name = "crowsi-github-transport"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97"
+license = "Apache-2.0"
+publish = ["ecosystem-private"]
+repository = "https://github.com/crowsi-net/crowsi-github-transport"
+
+[workspace]
+members = ["."]
+resolver = "3"
+
+[[bin]]
+name = "crowsi-github-transport"
+path = "src/main.rs"
+
+[dependencies]
+crowsi-credential-broker = { version = "=0.1.0", registry = "ecosystem-private" }
+crowsi-provider-egress-contracts = { version = "=0.10.0", registry = "ecosystem-private" }
+ed25519-dalek = "=2.2.0"
+getrandom = "=0.3.4"
+hex = "=0.4.3"
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.151"
+sha2 = "=0.10.9"
+zeroize = "=1.8.2"
+zixcel-github = { version = "=0.1.1", registry = "zixcel-private" }
+
+[dev-dependencies]
+base64 = "=0.22.1"
+tempfile = "=3.27.0"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+unwrap_used = "deny"
+todo = "deny"
